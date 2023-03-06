@@ -38,6 +38,18 @@ public class QueryStudentDemo {
             // display the students
             System.out.println("Students with last name Doe");
             displayStudents(theStudents);
+
+            // Query and display students whose lastName is Doe or first name is Bugs
+            theStudents = session.createQuery("from Student s where s.lastName='Doe' OR s.firstName='Bugs'").list();
+
+            System.out.println("Query and display students whose lastName is Doe or first name is Bugs");
+            displayStudents(theStudents);
+
+            // Query and display students whose email is like ...example.com
+            theStudents = session.createQuery("from Student s where s.email LIKE '%example.com'").list();
+
+            System.out.println("Query and display students whose email is like ...example.com");
+            displayStudents(theStudents);
             // commit transaction
             session.getTransaction().commit();
         } finally {
